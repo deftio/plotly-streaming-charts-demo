@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<script src="./js/plotly.min.js"></script>
+<script src="./js/bitwrench.min.js" ></script>
+<script src="./js/chart-helpers.js"> </script>
+<style>
+.chartArea {
+   height: 95%;
+}
+.widget {
+  color: #111;
+  height: 98%;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px;
+  float: left;
+
+}
+.chartRow {
+    height : 35vh;
+}
+</style>
+</head>
+
+<body class="bw-def-page-setup bw-font-sans-serif">
+<div class="bw-container">
+    <h2 >Real-Time  Streaming Chart with Plotly.js</div>
+    <div class="bw-container">
+        <div class="bw-row chartRow">
+            <div class="widget bw-col-4">
+              <div class="label">chart1</div>
+              <div id="chart1" class="chartArea"></div>
+            </div>
+            <div class="widget bw-col-4">
+                <div class="label">chart2</div>
+                <div id="chart2" class="chartArea"></div>
+              </div>
+      
+        </div>
+    </div>    
+</div>
+<script>
+    // sample simulated data
+    function getData() {
+        return Math.random()-0.5;
+    }  
+
+    // === chart 1
+    newPlotlyLineChart(
+        "chart1", // dom id of chart
+        2,      // number of traces
+        {yaxis:{range:[-1.5,1.5]}} // optional layout (see plotlyjs docs)
+        );
+    
+    // set interval updates the chart by calling getData() every
+    setInterval(function(){
+        updatePlotlyLineChart("chart1",[getData(),getData()*2]);
+    },67);
+
+
+    // === chart 2  with default auto scaling
+    newPlotlyLineChart(
+        "chart2",
+        1 // number of traces
+    ); 
+    setInterval(function(){
+        updatePlotlyLineChart("chart2",getData()*5);
+        },
+        50) 
+</script>
+
+</body>
+</html>

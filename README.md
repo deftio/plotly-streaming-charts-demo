@@ -2,8 +2,11 @@
 
 Quick repo for wrapping plotly.js into simple streaming and scrolling charts.
 
+See live demo here [streaming charts](https://deftio.github.io/plotly-streaming-charts-demo/)
 
 ![](./assets/sample-charts.png)
+
+
 
 ## Usage
 See basic.html for a simple example or index.html for 2 charts running with different update rates inside some boxes (shown above)
